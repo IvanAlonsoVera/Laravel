@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\partidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/clasificacion',[EquipoController::class,'clasificacion'])->middleware(['auth'])->name('clasificacion');
 
-Route::get('/listado',[EquipoController::class,'listado'])->middleware(['auth'])->name('listado');
+Route::get('/crearEquipo',[EquipoController::class,'crear'])->middleware(['auth'])->name('crearEquipo');
+
+Route::get('/guardarEquipo',[EquipoController::class,'guardar'])->middleware(['auth'])->name('guardarEquipo');
+
+Route::get('/partidoNuevo',[PartidoController::class,'crear'])->middleware(['auth'])->name('partidoNuevo');
+
+Route::get('/guardarPartido',[PartidoController::class,'modifClassificacion'])->middleware(['auth'])->name('guardarPartido');
+
 
 require __DIR__.'/auth.php';
