@@ -20,4 +20,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [PremioController::class,'listado'])->middleware(['auth'])->name('dashboard');
 
+Route::get('/crearPremio', [PremioController::class,'formCrearPremio'])->middleware(['auth'])->name('crearPremio');
+
+Route::post('/crearPremio', [PremioController::class,'crearPremio'])->middleware(['auth']);
+
+Route::get('/misPremios', [PremioController::class,'miListado'])->middleware(['auth'])->name('misPremios');
+
 require __DIR__.'/auth.php';
