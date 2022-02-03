@@ -7,8 +7,8 @@ use App\Models\premio;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class PremioController extends Controller
-{
+class PremioController extends Controller{
+    
     public function listado(){
         $premios = Premio::All()->sortByDesc('anio');
 
@@ -33,12 +33,37 @@ class PremioController extends Controller
 
         return redirect()->route('dashboard');
     }
-    public function miListado(){
+    public function listaMisPremios(){
 
+        $lp = Auth::User()->premios;
+        return view('misPremios',['listaPremios' => $lp]);
+
+        /*
         $premios = Premio::where('user_id',Auth::User()->id)->get();
 
         return view('/misPremios',['listaPremios' => $premios]);
+        */
 
 
+    }
+    public function borrarId($id){
+        $p = premio::find($id);
+
+        if($p->user_id == Auth::User()->id){
+            $p->delete();
+        }
+
+        $lp = Auth::User()->premios;
+
+        return view ('misPremios',['listaPremios' => $lp]);
+    }
+    public function modificarId($id){
+        $p = premio::find($id);
+
+        if($p->user_id == Auth::User()->id){
+            return view ('crearPremio',['premio' => $p]);
+        }else{
+            return view ('misPremios',['listaPremios' => Auth::User()->premios]);
+        }
     }
 }

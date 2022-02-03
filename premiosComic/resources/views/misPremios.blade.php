@@ -17,7 +17,8 @@
                             <p class="text-gray-700 text-base">{{ $prem->autor }}</p>
                           </div>
                           <div class="px-6 pt-4 pb-2">
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ $prem->User->name }}</span>
+                            <x-button class="ml-4" onclick="window.location.href='{{ url('/borrar/'.$prem->id)}}'">{{__('Borrar')}}</x-button>
+                            <x-button class="ml-4" onclick="window.location.href='{{ url('/modificar/'.$prem->id)}}'">{{__('Modificar')}}</x-button>
                           </div>
                         </div>                    
                     </div>
