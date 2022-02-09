@@ -1,0 +1,32 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Crear un Equipo') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <form enctype="multipart/form-data" action="{{ url('crearEquipo') }}" method="post">
+                    @csrf
+                        <x-label for="nombre">Nombre del equipo:</x-label>
+                        <x-input type="text" id="nombre" name="nombre"></x-input>
+                        <br><br>
+
+                        <x-label for="entrenador">Entrenador:</x-label>
+                        <x-input type="text" id="entrenador" name="entrenador"></x-input>
+                        <br><br>
+
+                        <x-label for="categoria">Categoria:</x-label>
+                        <x-input type="text" id="categoria" name="categoria"></x-input>
+                        <br><br>
+
+                        <x-button>{{ __('Crear Equipo')}}</x-button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
