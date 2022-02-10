@@ -13,7 +13,7 @@
                        @foreach($lj as $jugador)
                         <li>{{$jugador->nombre}}
                             <a href="{{url ('modificarJugador/'.$jugador->id)}}">Modificar</a>
-                            <a href="{{url ('borrarEquipo/'.$jugador->id)}}">Borrar</a>
+                            <a href="{{url ('borrarJugador/'.$jugador->id)}}">Borrar</a>
                         </li><br>
                         @endforeach 
                     </ul>

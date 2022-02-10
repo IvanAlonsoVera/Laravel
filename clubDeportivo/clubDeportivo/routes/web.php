@@ -38,12 +38,14 @@ Route::post('crearJugador',[JugadorController::class, 'guardar'])->middleware(['
 
 //Borrar y modificar
 Route::get('borrarEquipo/{id}',[EquipoController::class, 'borrar'])->middleware(['auth'])->name('borrarEquipo');
-Route::get('borrarJugador/{id}',[EquipoController::class, 'borrar'])->middleware(['auth'])->name('borrarJugador');
+
+Route::get('borrarJugador/{id}',[JugadorController::class, 'borrar'])->middleware(['auth'])->name('borrarJugador');
 
 Route::get('modificarEquipo/{id}',[EquipoController::class, 'mod'])->middleware(['auth'])->name('modEquipo');
 Route::post('modificarEquipo/{id}',[EquipoController::class, 'modBD'])->middleware(['auth'])->name('modBDEquipo');
-Route::get('modificarJugador/{id}',[EquipoController::class, 'mod'])->middleware(['auth'])->name('modJugador');
-Route::post('modificarJugador/{id}',[EquipoController::class, 'modBD'])->middleware(['auth'])->name('modBDJugador');
+
+Route::get('modificarJugador/{id}',[JugadorController::class, 'mod'])->middleware(['auth'])->name('modJugador');
+Route::post('modificarJugador/{id}',[JugadorController::class, 'modBD'])->middleware(['auth'])->name('modBDJugador');
 
 
 require __DIR__.'/auth.php';

@@ -21,7 +21,7 @@ class JugadorController extends Controller
         $resp = $datos->validate([
             'nombre' => 'required|max:100',
             'edad' => 'required|numeric',
-
+            'equipo_id'=> 'required'
         ]);
 
         $jugador = new jugador();
@@ -32,7 +32,38 @@ class JugadorController extends Controller
 
         $jugador->save();
 
-        return redirect()->route('listaJugadores',['id' => $datos->equipo_id]);
+        return redirect()->route('listadoJ',['id' => $datos->equipo_id]);
 
+    }
+    public function borrar($id){
+        $j = jugador::find($id);
+
+        $eq_id = $j->equipo_id;
+
+        $j->delete();
+
+        return redirect()->route('listadoJ',['id' => $eq_id]);
+    }
+    public function mod($id){
+        $j = jugador::find($id);
+
+        $equipos = equipo::All();
+
+        return view ('formularioCrearJugador',['jugador' => $j, 'equipos' => $equipos]);
+
+    }
+    public function modBD(Request $datos, $id){
+        
+        $j = jugador::find($id);
+
+        $j->nombre = $datos->nombre;
+        $j->edad = $datos->edad;
+        $j->equipo_id = $datos->equipo_id;
+
+        $j->save();
+
+        return redirect()->route('dashboard');
+    
+        
     }
 }
