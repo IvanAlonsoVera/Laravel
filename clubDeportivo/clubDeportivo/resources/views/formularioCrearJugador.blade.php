@@ -21,7 +21,7 @@
 
                         <x-label for="equipo">Equipo::</x-label>
                         <select name="equipo_id" value="-1" >
-                            @foreach ($leq as $equip)
+                            @foreach ($leq as $equipo)
                                 <option value="{{$equipo->id}}">{{$equipo->id}}</option>
                             @endforeach
                         </select>

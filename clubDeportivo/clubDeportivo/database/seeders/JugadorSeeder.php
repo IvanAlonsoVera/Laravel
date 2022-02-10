@@ -14,25 +14,16 @@ class JugadorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("jugadors")->insert([
-            'nombre' => 'casero',
-            'edad' => 20,
-            'equipo_id' => 1
-        ]);
-        DB::table("jugadors")->insert([
-            'nombre' => 'hugo',
-            'edad' => 23,
-            'equipo_id' => 2
-        ]);
-        DB::table("jugadors")->insert([
-            'nombre' => 'razban',
-            'edad' => 22,
-            'equipo_id' => 1
-        ]);
-        DB::table("jugadors")->insert([
-            'nombre' => 'javi',
-            'edad' => 24,
-            'equipo_id' => 2
-        ]);
+        $edad = array(10,11,12,13,14);
+
+        for ($i=1; $i <= 10 ; $i++) { 
+            for ($j=1; $j <= 12; $j++) { 
+                DB::table('jugadors')->insert([
+                    'nombre'=>'Jugador-'.$i."-".$j,
+                    'edad'=>$edad[rand(0,4)],
+                    'equipo_id'=>$i
+                ]);
+            }
+        }
     }
 }

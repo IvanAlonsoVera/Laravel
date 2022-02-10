@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class EquipoSeeder extends Seeder
 {
@@ -14,15 +15,14 @@ class EquipoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table("equipos")->insert([
-            'nombre' => 'Rebotona Team',
-            'entrenador' => 'Alexander',
-            'categoria' => 'bota'
-        ]);
-        DB::table("equipos")->insert([
-            'nombre' => 'Padrastro Team',
-            'entrenador' => 'Isaias',
-            'categoria' => 'limpieza'
-        ]);
+        $cat = array('sub10','sub12','sub12');
+
+        for ($i=0; $i < 10; $i++) { 
+            DB::table('equipos')->insert([
+                'nombre' => 'equipo'.$i,
+                'entrenador' => Str::random(10),
+                'categoria' => $cat[rand(0,2)]
+            ]);
+        }
     }
 }

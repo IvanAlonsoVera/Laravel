@@ -11,7 +11,10 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul>
                        @foreach($lj as $jugador)
-                        <li>{{$jugador->nombre}}</li>
+                        <li>{{$jugador->nombre}}
+                            <a href="{{url ('modificarJugador/'.$jugador->id)}}">Modificar</a>
+                            <a href="{{url ('borrarEquipo/'.$jugador->id)}}">Borrar</a>
+                        </li><br>
                         @endforeach 
                     </ul>
                 </div>
